@@ -2,14 +2,14 @@
 
 namespace SteveEdson;
 
-class Bitbar {
+class BitBar {
 
     public function newLine() {
         return new BitbarLine();
     }
 }
 
-class BitbarLine {
+class BitBarLine {
     protected $usedPipe = false;
     protected $text;
     protected $colour;
@@ -26,6 +26,14 @@ class BitbarLine {
     public function setText($text) {
         $this->text = $text;
         return $this;
+    }
+
+    /**
+     * @todo: Each cycled text should have formatting
+     * @param $text
+     */
+    public function cycleText($text) {
+        $this->text .= "\n" . $text;
     }
 
     public function setColor($color) {
@@ -77,6 +85,10 @@ class BitbarLine {
         return $this;
     }
 
+    /**
+     * Trim leading/trailing whitespace from the title.
+     * @return $this
+     */
     public function disableTrim() {
         $this->trim = false;
         return $this;
