@@ -146,7 +146,7 @@ class BitBarLine {
         echo $this->format();
 
         if($withDivide) {
-            echo "---\n";
+            echo "\n---\n";
         } else {
             echo "\n";
         }
