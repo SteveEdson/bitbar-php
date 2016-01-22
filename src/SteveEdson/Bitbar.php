@@ -103,6 +103,8 @@ class BitBarLine {
         $strings = $this->text;
 
         foreach($strings as &$string) {
+            $this->usedPipe = false;
+
             if ($this->fontFace && $this->fontSize) {
                 if (!$this->usedPipe) {
                     $string .= '|';
