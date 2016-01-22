@@ -24,7 +24,7 @@ class BitBarLine {
      * @return $this
      */
     public function setText($text) {
-        $this->text = $text;
+        $this->text = array($text);
         return $this;
     }
 
@@ -34,7 +34,7 @@ class BitBarLine {
      * @return $this
      */
     public function cycleText($text) {
-        $this->text .= "\n" . $text;
+        $this->text[] = $text;
         return $this;
     }
 
@@ -100,53 +100,55 @@ class BitBarLine {
      *
      */
     public function show() {
-        $string = $this->text;
+        $strings = $this->text;
 
-        if($this->fontFace && $this->fontSize) {
-            if(!$this->usedPipe) {
-                $string .= '|';
-                $this->usedPipe = true;
+        foreach($strings as &$string) {
+            if ($this->fontFace && $this->fontSize) {
+                if (!$this->usedPipe) {
+                    $string .= '|';
+                    $this->usedPipe = true;
+                }
+
+                $string .= ' ( \'size=' . $this->fontSize . '\' \'font=' . $this->fontFace . '\' )';
             }
 
-            $string .= ' ( \'size='.$this->fontSize . '\' \'font=' . $this->fontFace . '\' )';
-        }
+            if ($this->colour) {
+                if (!$this->usedPipe) {
+                    $string .= '|';
+                    $this->usedPipe = true;
+                }
 
-        if($this->colour) {
-            if(!$this->usedPipe) {
-                $string .= '|';
-                $this->usedPipe = true;
+                $string .= ' color=' . $this->colour;
             }
 
-            $string .= ' color=' . $this->colour;
-        }
+            if ($this->url) {
+                if (!$this->usedPipe) {
+                    $string .= '|';
+                    $this->usedPipe = true;
+                }
 
-        if($this->url) {
-            if(!$this->usedPipe) {
-                $string .= '|';
-                $this->usedPipe = true;
+                $string .= ' href=' . $this->url;
             }
 
-            $string .= ' href=' . $this->url;
-        }
+            if ($this->trim === false) {
+                if (!$this->usedPipe) {
+                    $string .= '|';
+                    $this->usedPipe = true;
+                }
 
-        if($this->trim === false) {
-            if(!$this->usedPipe) {
-                $string .= '|';
-                $this->usedPipe = true;
+                $string .= ' trim=false';
             }
 
-            $string .= ' trim=false';
-        }
+            if ($this->length) {
+                if (!$this->usedPipe) {
+                    $string .= '|';
+                    $this->usedPipe = true;
+                }
 
-        if($this->length) {
-            if(!$this->usedPipe) {
-                $string .= '|';
-                $this->usedPipe = true;
+                $string .= ' length=' . $this->length;
             }
-
-            $string .= ' length=' . $this->length;
         }
 
-        echo $string . "\n---\n";
+        echo implode("\n", $strings) . "\n---\n";
     }
 }
