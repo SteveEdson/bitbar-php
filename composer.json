@@ -1,5 +1,5 @@
 {
-  "name": "SteveEdso/bitbar-php",
+  "name": "steveedson/bitbar-php",
   "description": "PHP Formatter for BitBar plugins",
   "autoload": {
     "psr-4": {
