@@ -3,5 +3,8 @@
     "psr-4": {
       "SteveEdson": "src/SteveEdson"
     }
+  },
+  "require": {
+    "php": ">=5.3.0"
   }
 }
