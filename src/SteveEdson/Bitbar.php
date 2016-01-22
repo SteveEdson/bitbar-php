@@ -31,9 +31,11 @@ class BitBarLine {
     /**
      * @todo: Each cycled text should have formatting
      * @param $text
+     * @return $this
      */
     public function cycleText($text) {
         $this->text .= "\n" . $text;
+        return $this;
     }
 
     public function setColor($color) {
