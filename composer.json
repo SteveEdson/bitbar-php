@@ -3,7 +3,7 @@
   "description": "PHP Formatter for BitBar plugins",
   "autoload": {
     "psr-4": {
-      "SteveEdson": "src/SteveEdson"
+      "SteveEdson\\": "src/SteveEdson"
     }
   },
   "require": {
