@@ -5,7 +5,7 @@ Currently, BitBar thinks that any file in your plugins directory is a plugin, an
 
 ```json
 {
-  require: {
+  "require": {
     "steveedson/bitbar-php": "dev-master"
   }
 }
