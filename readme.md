@@ -36,5 +36,3 @@ $line
     ->show();
 ```
 
-At the time of writing, there isn't a single PHP plugin available on the BitBar website, hopefully this library will help change that.
-
