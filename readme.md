@@ -1,6 +1,6 @@
 ## Installing
 
-Currently, BitBar thinks that any file in your plugins directory is a plugin, and tries to execute it. To workaround this, create a hidden folder, beginning with a dot, for example `.bitbar/`. In this directory create or edit your `composer.json` to include the library:
+Currently, BitBar reads any file in your directory a plugin, and tries to execute it. To workaround this, create a hidden folder, beginning with a dot, for example `.bitbar/`. In this directory create or edit your `composer.json` to include the library:
 
 
 ```json
@@ -15,7 +15,11 @@ or run `$ composer require "steveedson/bitbar-php"`
 
 ## Usage
 
+In your BitBar plugins directory, create a file, e.g. `test.5m.php`. Don't forget to add the shebang at the beginning.
+
 ```php
+#!/usr/bin/php
+
 <?php
 
 require "vendor/autoload.php";
