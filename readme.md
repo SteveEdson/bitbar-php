@@ -22,7 +22,7 @@ In your BitBar plugins directory, create a file, e.g. `test.5m.php`. Don't forge
 
 <?php
 
-require "vendor/autoload.php";
+require ".bitbar/vendor/autoload.php";
 
 use SteveEdson\BitBar;
 
