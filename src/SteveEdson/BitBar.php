@@ -17,7 +17,11 @@ class BitBarLine {
     protected $fontSize;
     protected $fontFace;
     protected $length;
+    protected $terminal;
+    protected $bash;
+    protected $dropdown;
     protected $trim = true;
+    protected $refresh = false;
 
     /**
      * @param mixed $text
@@ -87,6 +91,34 @@ class BitBarLine {
     }
 
     /**
+     * @param $boolean
+     */
+    public function setTerminal($boolean) {
+        $this->terminal = (boolean) $boolean;
+    }
+
+    /**
+     * @param $boolean
+     */
+    public function setDropdown($boolean) {
+        $this->dropdown = (boolean) $boolean;
+    }
+
+    /**
+     * @param $boolean
+     */
+    public function setRefresh($boolean) {
+        $this->refresh = (boolean) $boolean;
+    }
+
+    /**
+     *
+     */
+    public function enableRefresh() {
+        $this->setRefresh(true);
+    }
+
+    /**
      *
      */
     public function format() {
@@ -128,6 +160,42 @@ class BitBarLine {
             }
 
             $string .= ' trim=false';
+        }
+
+        if ($this->bash) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' bash=' . $this->bash;
+        }
+
+        if ($this->refresh) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' refresh=true';
+        }
+
+        if($this->terminal !== null) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' terminal='.json_encode($this->terminal);
+        }
+
+        if($this->dropdown !== null) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' dropdown='.json_encode($this->dropdown);
         }
 
         if ($this->length) {
