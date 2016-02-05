@@ -32,8 +32,12 @@ class BitBarLine {
         return $this;
     }
 
+    /**
+     * @param $color
+     * @return BitBarLine
+     */
     public function setColor($color) {
-        $this->setColour($color);
+        return $this->setColour($color);
     }
 
     /**
@@ -92,30 +96,36 @@ class BitBarLine {
 
     /**
      * @param $boolean
+     * @return $this
      */
     public function setTerminal($boolean) {
         $this->terminal = (boolean) $boolean;
+        return $this;
     }
 
     /**
      * @param $boolean
+     * @return $this
      */
     public function setDropdown($boolean) {
         $this->dropdown = (boolean) $boolean;
+        return $this;
     }
 
     /**
      * @param $boolean
+     * @return $this
      */
     public function setRefresh($boolean) {
         $this->refresh = (boolean) $boolean;
+        return $this;
     }
 
     /**
-     *
+     * @return BitBarLine
      */
     public function enableRefresh() {
-        $this->setRefresh(true);
+        return $this->setRefresh(true);
     }
 
     /**
