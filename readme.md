@@ -23,10 +23,10 @@ You file structure inside your plugins directory, should look something like:
 
 ```
 .
-├── .bitbar
+├── .bitbar/
 │   ├── composer.json
-│   └── vendor
-├── test.5m.php
+│   └── vendor/
+└── test.5m.php
 ```
 
 ## Usage
