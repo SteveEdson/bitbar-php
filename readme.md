@@ -17,6 +17,18 @@ Currently, BitBar reads any file in your directory a plugin, and tries to execut
 
 or run `$ composer require "steveedson/bitbar-php"`
 
+### File Structure
+
+You file structure inside your plugins directory, should look something like:
+
+```
+.
+├── .bitbar
+│   ├── composer.json
+│   └── vendor
+├── test.5m.php
+```
+
 ## Usage
 
 In your BitBar plugins directory, create a file, e.g. `test.5m.php`. Don't forget to add the shebang at the beginning.
