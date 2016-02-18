@@ -22,6 +22,7 @@ class BitBarLine {
     protected $dropdown;
     protected $trim = true;
     protected $refresh = false;
+    protected $alternate = false;
 
     /**
      * @param mixed $text
@@ -120,6 +121,16 @@ class BitBarLine {
         $this->refresh = (boolean) $boolean;
         return $this;
     }
+    
+    
+    /**
+     * @param $boolean
+     * @return $this
+     */
+    public function setAlternate($boolean) {
+        $this->alternate = (boolean) $boolean;
+        return $this;
+    }
 
     /**
      * @return BitBarLine
@@ -170,6 +181,15 @@ class BitBarLine {
             }
 
             $string .= ' trim=false';
+        }
+        
+        if ($this->alternate === true) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' alternate=true';
         }
 
         if ($this->bash) {
