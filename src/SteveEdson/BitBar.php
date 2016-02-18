@@ -145,6 +145,8 @@ class BitBarLine {
     public function format() {
         $string = $this->text;
 
+        $string = EmojiParser::parseText($string);
+
         $this->usedPipe = false;
 
         if ($this->fontFace && $this->fontSize) {
@@ -248,5 +250,31 @@ class BitBarLine {
         } else {
             echo "\n";
         }
+    }
+}
+
+class EmojiParser {
+
+    protected static $rawEmojiData = null;
+    protected static $emoji = null;
+
+    public static function parseText($text) {
+        if(self::$rawEmojiData == null) {
+            self::$emoji = self::loadEmoji();
+        }
+
+        return str_replace(array_keys(self::$emoji), array_values(self::$emoji), $text);
+    }
+
+    protected static function loadEmoji() {
+        self::$rawEmojiData = json_decode(file_get_contents(__DIR__ . "/../../emoji.json"), true);
+
+        $emojis = array();
+
+        foreach(self::$rawEmojiData as $emoji) {
+            $emojis[$emoji['shortname']] = $emoji['unicode'];
+        }
+
+        return $emojis;
     }
 }
