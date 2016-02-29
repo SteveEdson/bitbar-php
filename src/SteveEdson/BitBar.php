@@ -103,6 +103,15 @@ class BitBarLine {
         $this->terminal = (boolean) $boolean;
         return $this;
     }
+    
+    /**
+     * @param mixed text
+     * @return $this
+     */
+    public function setBash($text) {
+        $this->bash = $text;
+        return $this;
+    }
 
     /**
      * @param $boolean
