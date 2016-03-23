@@ -154,7 +154,7 @@ class BitBarLine {
      * @param $disable
      * @return $this
      */
-    public function disableEmoji($disable) {
+    public function disableEmoji($disable = true) {
         $this->disableEmoji = $disable;
         return $this;
     }
