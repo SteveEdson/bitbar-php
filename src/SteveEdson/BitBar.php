@@ -23,6 +23,7 @@ class BitBarLine {
     protected $trim = true;
     protected $refresh = false;
     protected $alternate = false;
+    protected $disableEmoji = false;
 
     /**
      * @param mixed $text
@@ -149,6 +150,16 @@ class BitBarLine {
     }
 
     /**
+     * Disable converting :beer: -> Emoji
+     * @param $disable
+     * @return $this
+     */
+    public function disableEmoji($disable) {
+        $this->disableEmoji = $disable;
+        return $this;
+    }
+
+    /**
      *
      */
     public function format() {
@@ -221,6 +232,15 @@ class BitBarLine {
             $string .= ' refresh=true';
         }
 
+        if($this->disableEmoji) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' emojize=false';
+        }
+
         if($this->terminal !== null) {
             if (!$this->usedPipe) {
                 $string .= '|';
@@ -259,31 +279,5 @@ class BitBarLine {
         } else {
             echo "\n";
         }
-    }
-}
-
-class EmojiParser {
-
-    protected static $rawEmojiData = null;
-    protected static $emoji = null;
-
-    public static function parseText($text) {
-        if(self::$rawEmojiData == null) {
-            self::$emoji = self::loadEmoji();
-        }
-
-        return str_replace(array_keys(self::$emoji), array_values(self::$emoji), $text);
-    }
-
-    protected static function loadEmoji() {
-        self::$rawEmojiData = json_decode(file_get_contents(__DIR__ . "/../../emoji.json"), true);
-
-        $emojis = array();
-
-        foreach(self::$rawEmojiData as $emoji) {
-            $emojis[$emoji['shortname']] = $emoji['unicode'];
-        }
-
-        return $emojis;
     }
 }
