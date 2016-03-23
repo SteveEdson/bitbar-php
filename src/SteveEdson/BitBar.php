@@ -190,6 +190,7 @@ class BitBarLine {
      * @return BitBarSubMenu
      */
     public function addSubMenu() {
+        $this->show(false);
         return new BitBarSubMenu();
     }
 
