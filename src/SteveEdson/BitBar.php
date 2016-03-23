@@ -7,6 +7,10 @@ class BitBar {
     public function newLine() {
         return new BitbarLine();
     }
+
+    public function divide() {
+        (new BitBarLine())->show();
+    }
 }
 
 class BitBarLine {
