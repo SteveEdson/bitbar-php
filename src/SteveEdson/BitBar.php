@@ -165,8 +165,6 @@ class BitBarLine {
     public function format() {
         $string = $this->text;
 
-        $string = EmojiParser::parseText($string);
-
         $this->usedPipe = false;
 
         if ($this->fontFace && $this->fontSize) {
