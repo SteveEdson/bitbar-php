@@ -10,6 +10,7 @@ class BitBar {
 }
 
 class BitBarLine {
+    protected $withinSubMenu = false;
     protected $usedPipe = false;
     protected $text;
     protected $colour;
@@ -27,6 +28,14 @@ class BitBarLine {
     protected $alternate = false;
     protected $disableEmoji = false;
     protected $disableAnsi = false;
+
+    /**
+     * BitBarLine constructor.
+     * @param bool $withinSubMenu
+     */
+    public function __construct($withinSubMenu = false) {
+        $this->withinSubMenu = $withinSubMenu;
+    }
 
     /**
      * @param mixed $text
@@ -189,7 +198,11 @@ class BitBarLine {
      *
      */
     public function format() {
-        $string = $this->text;
+        if($this->withinSubMenu) {
+            $string = '-- ' . $this->text;
+        } else {
+            $string = $this->text;
+        }
 
         $this->usedPipe = false;
 
@@ -330,5 +343,11 @@ class BitBarLine {
         } else {
             echo "\n";
         }
+    }
+}
+
+class BitBarSubMenu {
+    public function newLine() {
+        return new BitbarLine(true);
     }
 }
