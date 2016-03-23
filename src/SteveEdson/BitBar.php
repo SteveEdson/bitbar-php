@@ -259,10 +259,9 @@ class BitBarLine {
             // If file exists on system, or is a url
             if(is_file($this->image) || !filter_var($this->image, FILTER_VALIDATE_URL) === false) {
                 $this->image = base64_encode(file_get_contents($this->image));
-
             }
 
-            $string .= ' image='.$this->image;
+            $string .= ' image="'.$this->image . '"';
         }
 
         if($this->terminal !== null) {
