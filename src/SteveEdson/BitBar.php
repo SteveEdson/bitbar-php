@@ -26,6 +26,7 @@ class BitBarLine {
     protected $refresh = false;
     protected $alternate = false;
     protected $disableEmoji = false;
+    protected $disableAnsi = false;
 
     /**
      * @param mixed $text
@@ -175,6 +176,16 @@ class BitBarLine {
     }
 
     /**
+     * Disable converting :beer: -> Emoji
+     * @param $disable
+     * @return $this
+     */
+    public function disableAnsi($disable = true) {
+        $this->disableAnsi = $disable;
+        return $this;
+    }
+
+    /**
      *
      */
     public function format() {
@@ -252,6 +263,15 @@ class BitBarLine {
             }
 
             $string .= ' emojize=false';
+        }
+
+        if($this->disableAnsi) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' ansi=false';
         }
 
         if($this->image) {
