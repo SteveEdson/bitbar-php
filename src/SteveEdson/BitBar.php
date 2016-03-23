@@ -166,7 +166,6 @@ class BitBarLine {
      * @param $image
      * @param bool $isImageTemplate
      * @return $this
-     * @internal param bool $isTemplate
      */
     public function setImage($image, $isImageTemplate = false) {
         $this->image = $image;
@@ -348,7 +347,7 @@ class BitBarLine {
     public function show($withDivide = true) {
         echo $this->format();
 
-        if($withDivide) {
+        if(!$this->withinSubMenu && $withDivide) {
             echo "\n---\n";
         } else {
             echo "\n";
