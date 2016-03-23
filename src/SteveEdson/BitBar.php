@@ -20,6 +20,7 @@ class BitBarLine {
     protected $terminal;
     protected $bash;
     protected $dropdown;
+    protected $image;
     protected $trim = true;
     protected $refresh = false;
     protected $alternate = false;
@@ -150,6 +151,16 @@ class BitBarLine {
     }
 
     /**
+     * Base 64 encoded image, or path to image
+     * @param $image
+     * @return $this
+     */
+    public function setImage($image) {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
      * Disable converting :beer: -> Emoji
      * @param $disable
      * @return $this
@@ -237,6 +248,19 @@ class BitBarLine {
             }
 
             $string .= ' emojize=false';
+        }
+
+        if($this->image) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            if(is_file($this->image)) {
+                $this->image = base64_encode(file_get_contents($this->image));
+
+                $string .= ' image='.$this->image;
+            }
         }
 
         if($this->terminal !== null) {
