@@ -21,6 +21,7 @@ class BitBarLine {
     protected $bash;
     protected $dropdown;
     protected $image;
+    protected $imageIsTemplate = false;
     protected $trim = true;
     protected $refresh = false;
     protected $alternate = false;
@@ -153,10 +154,13 @@ class BitBarLine {
     /**
      * Base 64 encoded image, or path to image
      * @param $image
+     * @param bool $isImageTemplate
      * @return $this
+     * @internal param bool $isTemplate
      */
-    public function setImage($image) {
+    public function setImage($image, $isImageTemplate = false) {
         $this->image = $image;
+        $this->imageIsTemplate = $isImageTemplate;
         return $this;
     }
 
@@ -261,7 +265,11 @@ class BitBarLine {
                 $this->image = base64_encode(file_get_contents($this->image));
             }
 
-            $string .= ' image="'.$this->image . '"';
+            if($this->imageIsTemplate) {
+                $string .= ' imageTemplate="' . $this->image . '"';
+            } else {
+                $string .= ' image="' . $this->image . '"';
+            }
         }
 
         if($this->terminal !== null) {
