@@ -185,6 +185,15 @@ class BitBarLine {
     }
 
     /**
+     * Create a sub menu
+     *
+     * @return BitBarSubMenu
+     */
+    public function addSubMenu() {
+        return new BitBarSubMenu();
+    }
+
+    /**
      * Disable converting :beer: -> Emoji
      * @param $disable
      * @return $this
