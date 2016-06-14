@@ -312,7 +312,7 @@ class BitBarLine {
             }
 
             if($this->imageIsTemplate) {
-                $string .= ' imageTemplate="' . $this->image . '"';
+                $string .= ' templateImage="' . $this->image . '"';
             } else {
                 $string .= ' image="' . $this->image . '"';
             }
