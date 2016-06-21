@@ -219,13 +219,23 @@ class BitBarLine {
 
         $this->usedPipe = false;
 
-        if ($this->fontFace && $this->fontSize) {
+        if ($this->fontSize) {
             if (!$this->usedPipe) {
                 $string .= '|';
                 $this->usedPipe = true;
             }
 
-            $string .= ' ( \'size=' . $this->fontSize . '\' \'font=' . $this->fontFace . '\' )';
+            $string .= ' size=' . $this->fontSize;
+        }
+
+
+        if ($this->fontFace) {
+            if (!$this->usedPipe) {
+                $string .= '|';
+                $this->usedPipe = true;
+            }
+
+            $string .= ' font=' . $this->fontFace;
         }
 
         if ($this->colour) {
@@ -312,7 +322,7 @@ class BitBarLine {
             }
 
             if($this->imageIsTemplate) {
-                $string .= ' imageTemplate="' . $this->image . '"';
+                $string .= ' templateImage="' . $this->image . '"';
             } else {
                 $string .= ' image="' . $this->image . '"';
             }
