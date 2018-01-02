@@ -24,6 +24,7 @@ class BitBarLine {
     protected $length;
     protected $terminal;
     protected $bash;
+    protected $params = [];
     protected $dropdown;
     protected $image;
     protected $imageIsTemplate = false;
@@ -120,13 +121,17 @@ class BitBarLine {
         $this->terminal = (boolean) $boolean;
         return $this;
     }
-    
+
     /**
-     * @param mixed text
+     * @param string text
+     * @param array $params
+     *
      * @return $this
      */
-    public function setBash($text) {
-        $this->bash = $text;
+    public function setBash( $text, array $params = [] )
+    {
+        $this->bash   = $text;
+        $this->params = $params;
         return $this;
     }
 
@@ -280,7 +285,10 @@ class BitBarLine {
                 $this->usedPipe = true;
             }
 
-            $string .= ' bash=' . $this->bash;
+            $string .= sprintf(' bash="%s"', $this->bash);
+
+            foreach($this->params as $k => $param)
+                $string .= sprintf(' param%s="%s"', ++$k, $param);
         }
 
         if ($this->refresh) {
