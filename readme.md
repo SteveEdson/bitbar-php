@@ -56,3 +56,29 @@ $line
     ->show();
 ```
 
+### Examples
+
+#### Using Sub Menus
+
+// Create BitBar formatter
+$bb = new BitBar();
+
+// Create the first line
+$line = $bb->newLine();
+
+// Set the text and formatting
+$mainMenu = $line
+    ->setText("Servers")
+    ->setColour("yellow");
+
+$mainMenu = $mainMenu->addSubMenu()
+    ->newLine()
+    ->setText("Server 1")
+    ->setUrl('http://server1.com');
+
+$mainMenu = $mainMenu->addSubMenu()
+    ->newLine()
+    ->setText("Server 2")
+    ->setUrl('http://server2.com');
+
+$mainMenu->show();
