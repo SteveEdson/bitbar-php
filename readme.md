@@ -60,6 +60,7 @@ $line
 
 #### Using Sub Menus
 
+```php
 // Create BitBar formatter
 $bb = new BitBar();
 
@@ -82,3 +83,4 @@ $mainMenu = $mainMenu->addSubMenu()
     ->setUrl('http://server2.com');
 
 $mainMenu->show();
+```
