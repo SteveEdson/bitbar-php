@@ -287,7 +287,7 @@ class BitBarLine {
 
             $string .= sprintf(' bash="%s"', $this->bash);
 
-            foreach($this->params as $k => $param)
+            foreach(array_values($this->params) as $k => $param)
                 $string .= sprintf(' param%s="%s"', ++$k, $param);
         }
 
