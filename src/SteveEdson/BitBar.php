@@ -9,7 +9,8 @@ class BitBar {
     }
 
     public function divide() {
-        (new BitBarLine())->show();
+        $_line = new BitBarLine();
+        $_line->show();
     }
 }
 
@@ -24,7 +25,7 @@ class BitBarLine {
     protected $length;
     protected $terminal;
     protected $bash;
-    protected $params = [];
+    protected $params = array();
     protected $dropdown;
     protected $image;
     protected $imageIsTemplate = false;
