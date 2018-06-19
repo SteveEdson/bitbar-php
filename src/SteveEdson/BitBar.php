@@ -122,15 +122,15 @@ class BitBarLine {
         return $this;
     }
 
+
     /**
-     * @param string text
-     * @param array $params
-     *
+     * @param string $command Command to run when selected
+     * @param array $params specify arguments to the script
      * @return $this
      */
-    public function setBash( $text, array $params = [] )
+    public function setBash($command, array $params = array())
     {
-        $this->bash   = $text;
+        $this->bash   = $command;
         $this->params = $params;
         return $this;
     }
