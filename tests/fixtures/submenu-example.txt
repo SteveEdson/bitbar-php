@@ -1,0 +1,10 @@
+Places
+--London
+--Paris
+--Tokyo
+Fruit
+--Apple
+--Orange
+--Melon
+----Watermelon
+----Honeydew
