@@ -235,7 +235,7 @@ class BitBarLine {
                 $this->usedPipe = true;
             }
 
-            $string .= ' font=' . $this->fontFace;
+            $string .= ' font=\'' . $this->fontFace . '\'';
         }
 
         if ($this->colour) {
