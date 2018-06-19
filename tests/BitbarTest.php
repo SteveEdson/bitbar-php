@@ -57,23 +57,26 @@ class BitbarTest extends \PHPUnit_Framework_TestCase {
             $line = $bb->newLine()
                 ->setText($title);
 
+            $subMenu = $line->addSubMenu();
+
             foreach($items as $item) {
                 $title = is_array($item) ? $item['title'] : $item;
 
-                $line = $line->addSubMenu()
-                    ->newLine()
-                    ->setText($title);
+                $subMenuItem = $subMenu->newLine()
+                ->setText($title);
 
                 if(is_array($item)) {
+                    $nestedSubMenu = $line->addSubMenu();
+
                     foreach($item['items'] as $subItem) {
-                        $line = $line->addSubMenu()
+                        $nestedSubMenu
                             ->newLine()
                             ->setText($subItem);
                         }
                 }
-            }
 
-            $line->show();
+                $subMenuItem->show();
+            }
         }
     }
 }

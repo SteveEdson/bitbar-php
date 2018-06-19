@@ -3,7 +3,7 @@
 namespace SteveEdson;
 
 class BitBarSubMenu {
-    public $depth = 1;
+    public $depth = 0;
 
     /**
      * BitBarSubMenu constructor.
