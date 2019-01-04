@@ -1,6 +1,7 @@
 # BitBar PHP Formatter
 
 [![Latest Stable Version](https://poser.pugx.org/steveedson/bitbar-php/v/stable)](https://packagist.org/packages/steveedson/bitbar-php) [![Total Downloads](https://poser.pugx.org/steveedson/bitbar-php/downloads)](https://packagist.org/packages/steveedson/bitbar-php) [![Latest Unstable Version](https://poser.pugx.org/steveedson/bitbar-php/v/unstable)](https://packagist.org/packages/steveedson/bitbar-php) [![License](https://poser.pugx.org/steveedson/bitbar-php/license)](https://packagist.org/packages/steveedson/bitbar-php)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSteveEdson%2Fbitbar-php.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSteveEdson%2Fbitbar-php?ref=badge_shield)
 
 ## Installing
 
@@ -84,3 +85,7 @@ $mainMenu = $mainMenu->addSubMenu()
 
 $mainMenu->show();
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSteveEdson%2Fbitbar-php.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSteveEdson%2Fbitbar-php?ref=badge_large)
